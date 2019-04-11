@@ -2,18 +2,54 @@ import React from 'react'
 import NavBar from './NavBar'
 import Footer from './Footer'
 import SocialIcons from './SocialIcons'
+import styled from 'styled-components'
 import '../App.css';
 import bg from '../bg.jpg';
 
+const HelloBg = styled.section`
+    ${props => props.mainTitle &&`
+        height: 100vh;
+        position: relative;
+        background-image: url(${bg});
+        background-position: center;
+        background-size: cover;
+    `}
+
+`;
+const P = styled.p`
+    ${props => props.noMargin &&`
+        margin:0;
+        font-weight: 500;
+    `}
+    ${props => props.italic &&`
+        font-style: italic;        
+    `}
+`;
+const HelloBlock = styled.section`    
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-40%);
+    color: white;
+    border: 1px solid white;
+    padding: 60px 40px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 60%;
+    h3 {
+        font-size: 35px;
+        margin: 20px 0 10px;
+    }    
+`;
+
 const Hello = () => (
-    <section className="hello-section">
-        <div className="hello-box">
-            <p>Hello!</p>
-            <h3>I'M CHRISTIAN</h3>
-            <p>Front-end.back-end.so.fullstack</p>
-        </div>
-        <img src={bg} alt="Programme" />
-    </section>
+    <HelloBg mainTitle>
+        <HelloBlock>
+            <P italic noMargin>Hello!</P>
+            <h3>I'm Christian Rodriguez</h3>
+            <P noMargin>Front-end && Back-end developer</P>
+        </HelloBlock>        
+    </HelloBg>
 )
 
 const WhoAmI = () => (
